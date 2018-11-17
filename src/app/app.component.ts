@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  name = 'ninja';
+  ninja = {
+    name: 'Ryu',
+    belt: "Red"
+  }
+
+  yell(e) {
+    alert('yelled');
+  }
 }
