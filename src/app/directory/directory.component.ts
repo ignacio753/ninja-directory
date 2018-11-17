@@ -7,10 +7,8 @@ import { ActivatedRoute } from '../../../node_modules/@angular/router';
   styleUrls: ['./directory.component.css']
 })
 export class DirectoryComponent implements OnInit {
-  ninja: string;
 
-  constructor(route: ActivatedRoute) { 
-    this.ninja = route.snapshot.params['ninja'];
+  constructor() { 
   }
 
   ngOnInit() {

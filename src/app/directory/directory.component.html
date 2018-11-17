@@ -1,4 +1,11 @@
-<p>
+<p [ngClass]="{'blue': true, 'red': true, 'underline': false}">
   directory works!
 </p>
-<p>{{ninja}}</p>
+
+<p *ngIf="false">Only show if test is true</p>
+
+<style>
+  .blue {color: blue;}
+  .red {color: red;}
+  .underline {text-decoration: underline;}
+</style>
