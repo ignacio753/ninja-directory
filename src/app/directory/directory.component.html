@@ -9,11 +9,17 @@
   <li *ngFor="let ninja of ninjas | filter:term">
     <div class="single-ninja">
       <!-- Ninja Belt -->
-      <span [ngStyle]="{background: ninja.belt}">{{ninja.belt | slice:1:3}} belt</span>
+      <span [ngStyle]="{background: ninja.belt}">{{ninja.belt}} belt</span>
       <!-- Ninja Name -->
       <h3>{{ninja.name | uppercase}}</h3>
     </div>
   </li>
 </ul>
 
-<button (click)="logIt()">Log me</button>
+<form id="add-ninja">
+  <input placeholder="Name" type="text" [(ngModel)]="name" name="name" />
+  <input placeholder="Belt" type="text" [(ngModel)]="belt" name="belt" />
+  <button (click)="fbPostData(name, belt)">Add Ninja</button>
+</form>
+
+<!--<button (click)="logIt()">Log me</button>-->

@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { DirectoryComponent } from './directory/directory.component';
 import { FilterPipe } from './filter.pipe';
 import { LoggingService } from './logging.service';
+import { DataService } from './data.service';
 
 const appRoutes: Routes = [
   { path: 'directory', component: DirectoryComponent },
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
       { enableTracing: true }
     )
   ],
-  providers: [LoggingService],
+  providers: [LoggingService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

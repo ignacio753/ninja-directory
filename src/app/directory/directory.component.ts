@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '../../../node_modules/@angular/router';
 import { LoggingService } from '../logging.service';
+import { DataService } from '../data.service';
+declare var firebase: any;
 
 @Component({
   selector: 'app-directory',
@@ -8,12 +10,8 @@ import { LoggingService } from '../logging.service';
   styleUrls: ['./directory.component.css']
 })
 export class DirectoryComponent implements OnInit {
-  ninjas = [
-    {name: "Yoshi", belt: "black"},
-    {name: "Ryu", belt: "red"},
-    {name: "Crystal", belt: "pink"},
-  ]
-  constructor(private logger: LoggingService) { 
+  ninjas = []
+  constructor(private logger: LoggingService, private dataService: DataService) { 
   }
 
   logIt(){
@@ -21,6 +19,21 @@ export class DirectoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*this.dataService.fetchData().subscribe(
+      (data) => this.ninjas = data
+    );*/
+
+    this.fbGetData();
+  }
+
+  fbGetData(){
+    firebase.database().ref('/').on('child_added', (snapshot) => {
+      this.ninjas.push(snapshot.val())
+    })
+  }
+
+  fbPostData(name, belt) {
+    firebase.database().ref('/').push({name: name, belt: belt});
   }
 
 }
